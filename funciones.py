@@ -120,6 +120,7 @@ def evaluar_modelo(modelo, nombre_modelo, compresor, X_train, y_train, X_test, y
 
     # Realizar predicciones en los datos de prueba
     y_pred = modelo.predict(X_test)
+    print(y_pred)
     
     # Calcular el coeficiente de determinación (R^2) en los datos de prueba
     test_r2 = r2_score(y_test, y_pred)
