@@ -11,6 +11,8 @@ from sklearn.model_selection import KFold, cross_val_score
 from sklearn.metrics import make_scorer, r2_score, mean_squared_error
 from yellowbrick.regressor import ResidualsPlot
 import os
+import socket
+
 
 
 def graficar_correlaciones(df, target, metric='pearson'):
@@ -120,7 +122,6 @@ def evaluar_modelo(modelo, nombre_modelo, compresor, X_train, y_train, X_test, y
 
     # Realizar predicciones en los datos de prueba
     y_pred = modelo.predict(X_test)
-    print(y_pred)
     
     # Calcular el coeficiente de determinación (R^2) en los datos de prueba
     test_r2 = r2_score(y_test, y_pred)
@@ -144,3 +145,40 @@ def evaluar_modelo(modelo, nombre_modelo, compresor, X_train, y_train, X_test, y
     visualizer.show()
 
     return metricas_modelo
+
+
+def map_ports_to_services(df, column_name, protocol='tcp'):
+    """
+    Mapea los puertos a servicios y agrega una nueva columna con el nombre del servicio.
+
+    Args:
+    - df (pd.DataFrame): El DataFrame original que contiene los puertos.
+    - column_name (str): El nombre de la columna que contiene los puertos.
+    - protocol (str): El protocolo a usar ('tcp' o 'udp'). Por defecto es 'tcp'.
+
+    Returns:
+    - pd.DataFrame: El DataFrame original con una nueva columna 'Servicio_<column_name>'.
+    - pd.DataFrame: Un DataFrame con la frecuencia de cada servicio.
+    """
+    # Obtener los puertos únicos
+    puertos = df[column_name].unique()
+
+    # Crear un diccionario para almacenar el mapeo de puertos a servicios
+    puerto_a_servicio = {}
+
+    # Identificar el servicio asociado a cada puerto
+    for puerto in puertos:
+        try:
+            servicio = socket.getservbyport(puerto, protocol)
+        except socket.error:
+            servicio = 'Servicio desconocido'
+        puerto_a_servicio[puerto] = servicio
+
+    # Crear una nueva columna en el DataFrame original para los servicios
+    df[f'Servicio_{column_name}'] = df[column_name].map(puerto_a_servicio)
+
+    # Contar el número de veces que aparece cada servicio
+    servicios_count = df[f'Servicio_{column_name}'].value_counts().reset_index()
+    servicios_count.columns = ['Servicio', 'Frecuencia']
+
+    return df, servicios_count
