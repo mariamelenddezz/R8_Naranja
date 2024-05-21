@@ -81,8 +81,6 @@ tab1 = html.Div([
             ], className="six columns"),
         ], className="row"), 
 
-        html.Br(),
-
         # Row 2: Gráficos
         html.Div([
             html.Div([
@@ -263,19 +261,19 @@ def actualizar_graficos(variable, potencia):
 
 
     # Crear gráficos para cada DataFrame filtrado
-    fig_multiple = px.box(data_frame=df_compresores_filtro, y=variable, title=f"Distribución de {variable} en todos los compresores", facet_col="Compresor", color="Compresor", color_discrete_sequence=["#FFB6C1", "#98FB98", "#ADD8E6", "#FFA07A"])
+    fig_multiple = px.ecdf(data_frame=df_compresores_filtro, x=variable, title=f"Distribución de {variable} en todos los compresores", facet_col="Compresor", color="Compresor", color_discrete_sequence=["#FFB6C1", "#32CD32", "#4682B4", "#E9967A"])
 
     fig_boxplotA = px.box(data_frame=df_cA_filtro, y=variable, title=f"Distribución de {variable} en Compresor A", color_discrete_sequence=["#FFB6C1"])
     fig_histA = px.histogram(data_frame=df_cA_filtro, x=variable, title=f"Histograma de {variable} en Compresor A", color_discrete_sequence=["#FFB6C1"])
 
-    fig_boxplotB = px.box(data_frame=df_cB_filtro, y=variable, title=f"Distribución de {variable} en Compresor B", color_discrete_sequence=["#98FB98"])
-    fig_histB = px.histogram(data_frame=df_cB_filtro, x=variable, title=f"Histograma de {variable} en Compresor B", color_discrete_sequence=["#98FB98"])
+    fig_boxplotB = px.box(data_frame=df_cB_filtro, y=variable, title=f"Distribución de {variable} en Compresor B", color_discrete_sequence=["#32CD32"])
+    fig_histB = px.histogram(data_frame=df_cB_filtro, x=variable, title=f"Histograma de {variable} en Compresor B", color_discrete_sequence=["#32CD32"])
 
-    fig_boxplotC = px.box(data_frame=df_cC_filtro, y=variable, title=f"Distribución de {variable} en Compresor C", color_discrete_sequence=["#ADD8E6"])
-    fig_histC = px.histogram(data_frame=df_cC_filtro, x=variable, title=f"Histograma de {variable} en Compresor C", color_discrete_sequence=["#ADD8E6"])
+    fig_boxplotC = px.box(data_frame=df_cC_filtro, y=variable, title=f"Distribución de {variable} en Compresor C", color_discrete_sequence=["#4682B4"])
+    fig_histC = px.histogram(data_frame=df_cC_filtro, x=variable, title=f"Histograma de {variable} en Compresor C", color_discrete_sequence=["#4682B4"])
 
-    fig_boxplotD = px.box(data_frame=df_cD_filtro, y=variable, title=f"Distribución de {variable} en Compresor D", color_discrete_sequence=["#FFA07A"])
-    fig_histD = px.histogram(data_frame=df_cD_filtro, x=variable, title=f"Histograma de {variable} en Compresor D", color_discrete_sequence=["#FFA07A"])
+    fig_boxplotD = px.box(data_frame=df_cD_filtro, y=variable, title=f"Distribución de {variable} en Compresor D", color_discrete_sequence=["#E9967A"])
+    fig_histD = px.histogram(data_frame=df_cD_filtro, x=variable, title=f"Histograma de {variable} en Compresor D", color_discrete_sequence=["#E9967A"])
 
     return fig_multiple, fig_boxplotA, fig_histA, fig_boxplotB, fig_histB, fig_boxplotC, fig_histC, fig_boxplotD, fig_histD
 
