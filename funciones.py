@@ -182,3 +182,6 @@ def map_ports_to_services(df, column_name, protocol='tcp'):
     servicios_count.columns = ['Servicio', 'Frecuencia']
 
     return df, servicios_count
+
+def ordenar_grupo(df_grupo):
+    return df_grupo.sort_values(by='Timestamp:')
