@@ -1,3 +1,6 @@
+# Fichero Firewall
+ruta = "../Datos/Originales/log2.csv"
+
 from datetime import datetime
 from time import sleep
 import json
@@ -27,7 +30,7 @@ topic_data = 'topic_data'
 
 # 4. Publicacion de los datos de log2.csv al topic_data
 # Leemos los datos que se quieren publicar
-file_name = '/home/martin/miproyecto/datos_reto_08/log2.csv'
+file_name = ruta
 df_log = pd.read_csv(file_name)
 df_log = df_log.rename(columns={'Source Port':'Source_Port'})
 df_log = df_log.rename(columns={'Destination Port':'Destination_Port'})
