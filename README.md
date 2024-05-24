@@ -20,4 +20,4 @@ Este repositorio contiene el código elaborado para el Reto 8.
 - `Big_Data` : Carpeta que contiene el bot de telegram. 
 - `Dash` : Carpeta que contiene el código Dash para visualizar datos.
 - `mqtt` : Carpeta que contiene los diferentes componentes del sistema MQTT.
-- 'environment.yml' : Archivo con el environment y todas las librerías.
+- `environment_RETO08.yml` : Archivo con el environment y todas las librerías.
