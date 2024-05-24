@@ -222,7 +222,31 @@ def actualizar_graficos(potencia, compresor, temp):
 
     # Gráfico de dispersión
     fig1 = px.scatter(data_frame=df_filtro_tabla, x="Frecuencia", y="Potencia_Medida", title="Relación entre la Frecuencia y la Potencia")
-    
+    fig1.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ),
+    shapes=[
+        # Recuadro alrededor del gráfico
+        dict(
+            type="rect",
+            xref="paper",
+            yref="paper",
+            x0=0.045,
+            y0=0,
+            x1=1,
+            y1=1,
+            line=dict(
+                color="Black",
+                width=2
+            )
+        )
+    ])
+    fig1.update_xaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.5)')
+    fig1.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.5)')
+
     # Datos para la tabla
     tabla1 = df_filtro_tabla[["Compresor", "Frecuencia", "Potencia_Medida", "Presion", "Temperatura"]].to_dict("records")
 
@@ -281,8 +305,11 @@ def actualizar_graficos(variable, potencia):
     plot_bgcolor='white',  # Fondo del gráfico blanco
     legend=dict(
         bgcolor="white"  # Fondo de la leyenda blanco
-    )
-)
+    ),
+    margin=dict(l=50, r=50, t=50, b=50))
+    fig_multiple.update_xaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+    fig_multiple.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+
 
     fig_boxplotA = px.box(data_frame=df_cA_filtro, y=variable, title=f"Distribución de {variable} en Compresor A", color_discrete_sequence=["#FFB6C1"])
     fig_histA = px.histogram(data_frame=df_cA_filtro, x=variable, title=f"Histograma de {variable} en Compresor A", color_discrete_sequence=["#FFB6C1"])
