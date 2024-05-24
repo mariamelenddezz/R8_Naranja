@@ -18,5 +18,5 @@ Este repositorio contiene el código elaborado para el Reto 8.
 - `optimizacion.ipynb` : Jupyter Notebook el cual contiene todo el proceso para realizar el algoritmo genetico.
 - `Anomalias` : Carpeta que contiene los diferentes Jupyter Notebooks para analizar las anomalias del firewall y de apache.
 - `Big_Data` : Carpeta que contiene el bot de telegram. 
-- `Dash` : Carpeta que contienen el python Dash para visualizar datos.
-- `mqtt` : Carpeta que continene los diferentes componentes del sistema MQTT.  
+- `Dash` : Carpeta que contiene el código Dash para visualizar datos.
+- `mqtt` : Carpeta que contiene los diferentes componentes del sistema MQTT.  
