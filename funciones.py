@@ -12,6 +12,7 @@ from sklearn.metrics import make_scorer, r2_score, mean_squared_error
 from yellowbrick.regressor import ResidualsPlot
 import os
 import socket
+import re
 
 
 
@@ -185,3 +186,16 @@ def map_ports_to_services(df, column_name, protocol='tcp'):
 
 def ordenar_grupo(df_grupo):
     return df_grupo.sort_values(by='Timestamp:')
+
+signatures = {
+    "SQL Injection": re.compile(r'.*UNION SELECT.*', re.IGNORECASE),
+    "XSS Attack": re.compile(r'.*(%3C|<)script(%3E|>).*', re.IGNORECASE),
+    "Path Traversal": re.compile(r'.*\.\./.*', re.IGNORECASE),
+    "Shellshock": re.compile(r'.*\(\s*\)\s*\{\s*:\s*;\s*\}.*', re.IGNORECASE)
+}
+
+def detect_attack(log_line):
+    for attack_name, pattern in signatures.items():
+        if pattern.search(log_line):
+            return attack_name
+    return None
