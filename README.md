@@ -19,4 +19,5 @@ Este repositorio contiene el código elaborado para el Reto 8.
 - `Anomalias` : Carpeta que contiene los diferentes Jupyter Notebooks para analizar las anomalias del firewall y de apache.
 - `Big_Data` : Carpeta que contiene el bot de telegram. 
 - `Dash` : Carpeta que contiene el código Dash para visualizar datos.
-- `mqtt` : Carpeta que contiene los diferentes componentes del sistema MQTT.  
+- `mqtt` : Carpeta que contiene los diferentes componentes del sistema MQTT.
+- 'environment.yml' : Archivo con el environment y todas las librerías.
