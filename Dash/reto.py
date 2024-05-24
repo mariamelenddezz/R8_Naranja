@@ -312,17 +312,82 @@ def actualizar_graficos(variable, potencia):
 
 
     fig_boxplotA = px.box(data_frame=df_cA_filtro, y=variable, title=f"Distribución de {variable} en Compresor A", color_discrete_sequence=["#FFB6C1"])
+    fig_boxplotA.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ))
+    fig_boxplotA.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+
     fig_histA = px.histogram(data_frame=df_cA_filtro, x=variable, title=f"Histograma de {variable} en Compresor A", color_discrete_sequence=["#FFB6C1"])
+    fig_histA.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ))
+    fig_histA.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+
 
     fig_boxplotB = px.box(data_frame=df_cB_filtro, y=variable, title=f"Distribución de {variable} en Compresor B", color_discrete_sequence=["#32CD32"])
+    fig_boxplotB.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ))
+    fig_boxplotB.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+    
     fig_histB = px.histogram(data_frame=df_cB_filtro, x=variable, title=f"Histograma de {variable} en Compresor B", color_discrete_sequence=["#32CD32"])
+    fig_histB.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ))
+    fig_histB.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+
 
     fig_boxplotC = px.box(data_frame=df_cC_filtro, y=variable, title=f"Distribución de {variable} en Compresor C", color_discrete_sequence=["#4682B4"])
+    fig_boxplotC.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ))
+    fig_boxplotC.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+
+
+
     fig_histC = px.histogram(data_frame=df_cC_filtro, x=variable, title=f"Histograma de {variable} en Compresor C", color_discrete_sequence=["#4682B4"])
+    fig_histC.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ))
+    fig_histC.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+
+
 
     fig_boxplotD = px.box(data_frame=df_cD_filtro, y=variable, title=f"Distribución de {variable} en Compresor D", color_discrete_sequence=["#E9967A"])
+    fig_boxplotD.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ))
+    fig_boxplotD.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
+    
     fig_histD = px.histogram(data_frame=df_cD_filtro, x=variable, title=f"Histograma de {variable} en Compresor D", color_discrete_sequence=["#E9967A"])
-
+    fig_histD.update_layout(
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    ))
+    fig_histD.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(128, 128, 128, 0.3)', griddash='dash')
     return fig_multiple, fig_boxplotA, fig_histA, fig_boxplotB, fig_histB, fig_boxplotC, fig_histC, fig_boxplotD, fig_histD
 
 
