@@ -86,7 +86,6 @@ def grafico_distribucion(y):
     left, right = np.percentile(y, [25, 75])
     ax2.vlines(mean, 0, height, ls=':')
 
-    # ax.fill_between(xs, 0, ys, facecolor='blue', alpha=0.2)
     ax2.fill_between(xs, 0, ys, where=(left <= xs) & (xs <= right), interpolate=True, alpha=0.2)
     ax2.text(left-7, 0, "Q1")
     ax2.text(right, 0, "Q3")
