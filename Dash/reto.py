@@ -275,6 +275,14 @@ def actualizar_graficos(variable, potencia):
 
     # Crear gráficos para cada DataFrame filtrado
     fig_multiple = px.ecdf(data_frame=df_compresores_filtro, x=variable, title=f"Distribución de {variable} en todos los compresores", facet_col="Compresor", color="Compresor", color_discrete_sequence=["#FFB6C1", "#32CD32", "#4682B4", "#E9967A"])
+    fig_multiple.update_layout(
+    yaxis_title="Probabilidad",  # Título del eje y
+    paper_bgcolor='white',  # Fondo del papel blanco
+    plot_bgcolor='white',  # Fondo del gráfico blanco
+    legend=dict(
+        bgcolor="white"  # Fondo de la leyenda blanco
+    )
+)
 
     fig_boxplotA = px.box(data_frame=df_cA_filtro, y=variable, title=f"Distribución de {variable} en Compresor A", color_discrete_sequence=["#FFB6C1"])
     fig_histA = px.histogram(data_frame=df_cA_filtro, x=variable, title=f"Histograma de {variable} en Compresor A", color_discrete_sequence=["#FFB6C1"])
