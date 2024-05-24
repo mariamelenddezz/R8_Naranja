@@ -1,3 +1,16 @@
+# Compresor A
+ruta_a = "../Datos/Originales/Comp_A.csv"
+
+# Compresor B
+ruta_b = "../Datos/Originales/Comp_B.csv"
+
+# Compresor C
+ruta_c = "../Datos/Originales/Comp_C.csv"
+
+# Compresor D
+ruta_d ="../Datos/Originales/Comp_D.csv"
+
+
 #-------------------------------------------------------------------------------------------------------------
 
 #Cargamos las librerías
@@ -14,10 +27,10 @@ from dash.dependencies import Input, Output
 #-------------------------------------------------------------------------------------------------------------
 
 #Carga de los datos y creación de df único
-df_cA = pd.read_csv("../Datos/Originales/Comp_A.csv")
-df_cB = pd.read_csv("../Datos/Originales/Comp_B.csv")
-df_cC = pd.read_csv("../Datos/Originales/Comp_C.csv")
-df_cD = pd.read_csv("../Datos/Originales/Comp_D.csv")
+df_cA = pd.read_csv(ruta_a)
+df_cB = pd.read_csv(ruta_b)
+df_cC = pd.read_csv(ruta_c)
+df_cD = pd.read_csv(ruta_d)
 
 # Agregar una columna de identificador para cada DataFrame
 df_cA['Compresor'] = 'CompresorA'
