@@ -67,6 +67,15 @@ def graficar_correlaciones(df, target, metric='pearson'):
 
 
 def grafico_distribucion(y):
+    """Genera un gráfico con la función de distribución acumulativa (CDF) y la estimación de densidad de kernel (KDE) para una serie de datos.
+
+    Args:
+        y (array-like): Serie de datos numéricos.
+
+
+    Returns:
+        None
+    """
     cdf_heating = Cdf.from_seq(y)
     fig, (ax1, ax2) = plt.subplots(2, figsize=(15, 15))
     ax1.plot(cdf_heating)
@@ -98,8 +107,32 @@ def grafico_distribucion(y):
 
 
 def evaluar_modelo(modelo, nombre_modelo, compresor, X_train, y_train, X_test, y_test, k_folds=5):
-    
-    metricas_modelo = {}
+    """Evalúa el rendimiento de un modelo de regresión, guarda el modelo en un archivo y muestra un gráfico de los residuos.
+
+    Args:
+        modelo : objeto
+            Modelo de regresión a evaluar.
+        nombre_modelo : str
+            Nombre del modelo.
+        compresor : str
+            Nombre del compresor.
+        X_train : array-like
+            Datos de entrenamiento (atributos).
+        y_train : array-like
+            Datos de entrenamiento (etiquetas).
+        X_test : array-like
+            Datos de prueba (atributos).
+        y_test : array-like
+            Datos de prueba (etiquetas).
+        k_folds : int, optional
+            Número de folds para la validación cruzada (default is 5).
+
+
+    Returns:
+        metricas_modelo : dict
+            Métricas del modelo evaluado.
+    """
+
 
     # Creamos un objeto KFold para dividir los datos
     kf = KFold(n_splits=k_folds, shuffle=True, random_state=42)
@@ -184,6 +217,17 @@ def map_ports_to_services(df, column_name, protocol='tcp'):
     return df, servicios_count
 
 def ordenar_grupo(df_grupo):
+    """Ordena un DataFrame de un grupo según la columna 'Timestamp:'.
+
+    Args:
+    - df_grupo : pandas.DataFrame
+        DataFrame del grupo a ordenar.
+
+    Returns:
+    - pandas.DataFrame
+        DataFrame del grupo ordenado según 'Timestamp:'.
+    """
+
     return df_grupo.sort_values(by='Timestamp:')
 
 signatures = {
@@ -194,6 +238,16 @@ signatures = {
 }
 
 def detect_attack(log_line):
+    """Detecta un ataque en una línea de registro utilizando patrones predefinidos.
+
+    Args:
+    - log_line : str
+        Línea de registro a analizar.
+
+    Returns:
+    - str or None
+        Nombre del ataque si se detecta, None si no se encuentra coincidencia.
+    """
     for attack_name, pattern in signatures.items():
         if pattern.search(log_line):
             return attack_name
